@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import OpenAI from "openai";
 import "./Dashboard.css";
 
 const steps = [
@@ -61,6 +62,10 @@ export default function Dashboard({ user = "User" }) {
     to: "",
     budget: "",
   });
+  const [modalOpen, setModalOpen] = useState(false);
+  const [itinerary, setItinerary] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   function handleChange(e) {
     setValues((v) => ({ ...v, [e.target.name]: e.target.value }));
@@ -72,9 +77,28 @@ export default function Dashboard({ user = "User" }) {
   function handleBack() {
     if (step > 0) setStep(step - 1);
   }
-  function handleStart() {
-    // You can handle itinerary creation here
-    alert("Itinerary creation started!\n" + JSON.stringify(values, null, 2));
+
+  async function handleStart() {
+    setLoading(true);
+    setError("");
+    setModalOpen(true);
+    setItinerary("");
+    try {
+      const client = new OpenAI({
+        apiKey: process.env.REACT_APP_OPENAI_API_KEY,
+        dangerouslyAllowBrowser: true,
+      });
+      const prompt = `Create a detailed travel itinerary for the following trip (in markdown):\n${JSON.stringify(values, null, 2)}`;
+      const response = await client.responses.create({
+        model: "gpt-4.1",
+        input: prompt,
+      });
+      setItinerary(response.output_text || "No itinerary generated.");
+    } catch (err) {
+      setError("Failed to generate itinerary: " + (err.message || err.toString()));
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -114,6 +138,59 @@ export default function Dashboard({ user = "User" }) {
             </div>
           </form>
         </div>
+        {/* Modal for itinerary */}
+        {modalOpen && (
+          <div style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100vw',
+            height: '100vh',
+            background: 'rgba(0,0,0,0.7)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 1000,
+          }}>
+            <div style={{
+              background: '#181818',
+              color: '#fff',
+              borderRadius: 16,
+              padding: 32,
+              maxWidth: 600,
+              width: '90%',
+              boxShadow: '0 4px 32px 0 rgba(0,0,0,0.25)',
+              position: 'relative',
+              overflowY: 'auto',
+              maxHeight: '80vh',
+            }}>
+              <button
+                onClick={() => setModalOpen(false)}
+                style={{
+                  position: 'absolute',
+                  top: 16,
+                  right: 16,
+                  background: '#232323',
+                  color: '#fff',
+                  border: 'none',
+                  borderRadius: 8,
+                  padding: '6px 14px',
+                  cursor: 'pointer',
+                  fontWeight: 700,
+                  fontSize: 18,
+                }}
+              >
+                ×
+              </button>
+              <h2 style={{marginTop: 0}}>Generated Itinerary</h2>
+              {loading && <div>Generating itinerary...</div>}
+              {error && <div style={{color: '#ff4d4f'}}>{error}</div>}
+              {!loading && !error && (
+                <div style={{whiteSpace: 'pre-wrap'}} dangerouslySetInnerHTML={{__html: itinerary.replace(/\n/g, '<br/>')}} />
+              )}
+            </div>
+          </div>
+        )}
       </main>
     </div>
   );
