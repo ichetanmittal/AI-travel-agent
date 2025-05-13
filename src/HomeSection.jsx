@@ -7,10 +7,10 @@ export default function HomeSection() {
   return (
     <section className="home-section">
       <h1 className="home-section__headline">
-        Global Payments Processed Locally
+      Travel Planner That Respects Your Budget
       </h1>
       <p className="home-section__subheading">
-        Boost success rates with localised payment methods across the world
+      From planning to payments, we handle the chaos so you enjoy the journey.
       </p>
       <div className="home-section__actions">
         <button className="home-section__btn home-section__btn--primary" onClick={() => navigate('/signup')}>Get Started</button>
