@@ -13,7 +13,7 @@ export default function HomeSection() {
       From planning to payments, we handle the chaos so you enjoy the journey.
       </p>
       <div className="home-section__actions">
-        <button className="home-section__btn home-section__btn--primary" onClick={() => navigate('/signup')}>Get Started</button>
+        <button className="home-section__btn home-section__btn--primary" onClick={() => navigate('/login')}>Get Started</button>
         <button className="home-section__btn home-section__btn--secondary">Talk to Founder</button>
       </div>
     </section>

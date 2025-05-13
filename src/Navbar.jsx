@@ -25,8 +25,9 @@ export default function Navbar() {
         <li>Developer</li> */}
       </ul>
       <div className="navbar__actions">
-        <button className="navbar__btn navbar__btn--primary">Get Started</button>
-        <button className="navbar__btn navbar__btn--secondary" onClick={() => navigate('/login')}>Login</button>
+        {/* Hide 'Get Started' and 'Login' buttons since user is already logged in */}
+        {/* <button className="navbar__btn navbar__btn--primary">Get Started</button>
+        <button className="navbar__btn navbar__btn--secondary" onClick={() => navigate('/login')}>Login</button> */}
       </div>
     </nav>
   );
