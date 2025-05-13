@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./BenefitsSection.css";
-
+import countryImg from './assets/country.png';
 const benefits = [
   {
     icon: "⏱️",
     title: "Itinerary That Matches Your Budget, Not Just Your Dreams",
     desc:
-      "Can’t afford the $40 ticket to that castle? We’ll suggest a beautiful local alternative—same vibe, no guilt",
+      "Can't afford the $40 ticket to that castle? We'll suggest a beautiful local alternative—same vibe, no guilt",
   },
   {
     icon: "✔️",
@@ -40,7 +40,8 @@ export default function BenefitsSection() {
       {/* <h2 className="benefits-headline">The Global Merchant Of Record Platform You Need</h2>
       <p className="benefits-subheading">Generate revenue seamlessly with Dodo Payments</p> */}
       <div className="benefits-content">
-        <div className="benefits-card-gradient">
+        <img src={countryImg} alt="World Map" style={{ width: '100%', maxWidth: 500, display: 'block', margin: '0 auto' }} />
+        {/* <div className="benefits-card-gradient">
           <div className="benefits-card">
             <div className="benefits-step">
               <span>Step 1. Identity verification</span>
@@ -51,7 +52,7 @@ export default function BenefitsSection() {
               <span className="benefits-verified">● Verified</span>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="benefits-features">
           {benefits.map((b, i) => (
             <div
