@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import OpenAI from "openai";
 import "./Dashboard.css";
 
 const steps = [
@@ -19,22 +18,22 @@ const steps = [
     ),
   },
   {
-    label: "From Destination",
+    label: "Origin",
     content: ({ values, onChange }) => (
       <div className="dashboard-step-fields">
         <label>
-          From
+         
           <input type="text" name="from" placeholder="e.g. New York" value={values.from} onChange={onChange} />
         </label>
       </div>
     ),
   },
   {
-    label: "To Destination",
+    label: "Destination",
     content: ({ values, onChange }) => (
       <div className="dashboard-step-fields">
         <label>
-          To
+          
           <input type="text" name="to" placeholder="e.g. Paris" value={values.to} onChange={onChange} />
         </label>
       </div>
@@ -84,16 +83,29 @@ export default function Dashboard({ user = "User" }) {
     setModalOpen(true);
     setItinerary("");
     try {
-      const client = new OpenAI({
-        apiKey: process.env.REACT_APP_OPENAI_API_KEY,
-        dangerouslyAllowBrowser: true,
-      });
       const prompt = `Create a detailed travel itinerary for the following trip (in markdown):\n${JSON.stringify(values, null, 2)}`;
-      const response = await client.responses.create({
-        model: "gpt-4.1",
-        input: prompt,
+      const response = await fetch("https://api.openai.com/v1/responses", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer ",
+        },
+        body: JSON.stringify({
+          model: "gpt-4.1",
+          input: prompt,
+        }),
       });
-      setItinerary(response.output_text || "No itinerary generated.");
+      const data = await response.json();
+      // Extract the itinerary text from the nested API response
+      let itineraryText = "";
+      try {
+        itineraryText = data.output?.[0]?.content?.[0]?.text || "";
+        // Remove code block markers if present
+        itineraryText = itineraryText.replace(/^```[a-zA-Z]*\n?|```$/g, "");
+      } catch (e) {
+        itineraryText = "";
+      }
+      setItinerary(itineraryText || "No itinerary generated.");
     } catch (err) {
       setError("Failed to generate itinerary: " + (err.message || err.toString()));
     } finally {
@@ -106,7 +118,7 @@ export default function Dashboard({ user = "User" }) {
       <aside className="dashboard-sidebar">
         <nav className="dashboard-nav">
           <div className="dashboard-nav-item dashboard-nav-item--active">Get Started</div>
-          <div className="dashboard-nav-item">Itineraries</div>
+          {/* <div className="dashboard-nav-item">Itineraries</div> */}
         </nav>
       </aside>
       <main className="dashboard-main">
