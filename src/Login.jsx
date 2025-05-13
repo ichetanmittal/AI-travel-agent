@@ -1,10 +1,18 @@
 import React, { useState } from "react";
 import "./Login.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    // On successful login, redirect to dashboard and pass user
+    navigate("/dashboard", { state: { user: email.split("@")[0] || "User" } });
+  }
 
   return (
     <div className="login-container">
@@ -17,7 +25,7 @@ export default function Login() {
       </div>
       <h1 className="login-title">Welcome back!</h1>
       <p className="login-subtitle">Login to CheckList AI</p>
-      <form className="login-form" onSubmit={e => e.preventDefault()}>
+      <form className="login-form" onSubmit={handleSubmit}>
         <label htmlFor="login-email" className="login-label">Email</label>
         <input
           id="login-email"

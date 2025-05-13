@@ -1,0 +1,83 @@
+.dashboard-root {
+  display: flex;
+  min-height: 100vh;
+  background: #000000;
+  color: #fff;
+}
+
+.dashboard-sidebar {
+  width: 240px;
+  background: #111;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1.5rem;
+  box-shadow: 2px 0 16px 0 rgba(0,0,0,0.10);
+}
+
+.dashboard-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 2.5rem;
+}
+.dashboard-brand {
+  color: #fff;
+  font-weight: 700;
+}
+
+.dashboard-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.dashboard-nav-item {
+  padding: 0.9rem 1.2rem;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #b0b0b0;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s;
+}
+.dashboard-nav-item--active, .dashboard-nav-item:hover {
+  background: #232323;
+  color: #d4ff3f;
+}
+
+.dashboard-main {
+  flex: 1;
+  padding: 4rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.dashboard-greeting h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+.dashboard-greeting h2 {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #b0b0b0;
+}
+
+@media (max-width: 800px) {
+  .dashboard-root {
+    flex-direction: column;
+  }
+  .dashboard-sidebar {
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    padding: 1rem;
+    gap: 2rem;
+  }
+  .dashboard-main {
+    padding: 2rem 1rem;
+  }
+} 
