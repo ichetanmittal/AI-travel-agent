@@ -4,20 +4,20 @@ import "./BenefitsSection.css";
 const benefits = [
   {
     icon: "⏱️",
-    title: "Launch Global Business within Minutes",
+    title: "Itinerary That Matches Your Budget, Not Just Your Dreams",
     desc:
-      "No need to set up your own entity or integrate any payment gateway, subscription or billing engine, fraud or chargeback solution etc",
+      "Can’t afford the $40 ticket to that castle? We’ll suggest a beautiful local alternative—same vibe, no guilt",
   },
   {
     icon: "✔️",
-    title: "Eliminate Payment Friction for Customers",
+    title: "Travel Smarter with the Right Fintech Tools",
     desc:
-      "90%+ success rate and 25+ local payment methods across 150+ countries",
+      "Avoid hidden fees. Get the best travel cards, eSIMs, and local deals based on your destination and spending habits",
   },
   {
     icon: "🌐",
-    title: "Automate Global Tax and Compliance",
-    desc: null,
+    title: "Stay One Step Ahead, Wherever You Are",
+    desc: "Get real-time alerts about protests, seasonal shifts, or what not to wear in a temple. It's like having a local guide—without the awkward group tours",
   },
 ];
 
@@ -37,8 +37,8 @@ export default function BenefitsSection() {
       <div className="benefits-label">
         <span className="benefits-label-icon">✱</span> Benefits
       </div>
-      <h2 className="benefits-headline">The Global Merchant Of Record Platform You Need</h2>
-      <p className="benefits-subheading">Generate revenue seamlessly with Dodo Payments</p>
+      {/* <h2 className="benefits-headline">The Global Merchant Of Record Platform You Need</h2>
+      <p className="benefits-subheading">Generate revenue seamlessly with Dodo Payments</p> */}
       <div className="benefits-content">
         <div className="benefits-card-gradient">
           <div className="benefits-card">
