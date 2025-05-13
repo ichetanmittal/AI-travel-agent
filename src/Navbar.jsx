@@ -1,7 +1,9 @@
 import React from "react";
 import "./Navbar.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
+  const navigate = useNavigate();
   return (
     <nav className="navbar">
       <div className="navbar__logo">
@@ -24,7 +26,7 @@ export default function Navbar() {
       </ul>
       <div className="navbar__actions">
         <button className="navbar__btn navbar__btn--primary">Get Started</button>
-        <button className="navbar__btn navbar__btn--secondary">Login</button>
+        <button className="navbar__btn navbar__btn--secondary" onClick={() => navigate('/login')}>Login</button>
       </div>
     </nav>
   );
