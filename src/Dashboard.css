@@ -64,6 +64,90 @@
   font-size: 1.4rem;
   font-weight: 500;
   color: #b0b0b0;
+  margin-bottom: 2.5rem;
+}
+
+.dashboard-stepper {
+  background: #181818;
+  border-radius: 18px;
+  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.10);
+  padding: 2.5rem 2rem 2rem 2rem;
+  min-width: 340px;
+  max-width: 420px;
+  width: 100%;
+  margin-top: 1.5rem;
+}
+.dashboard-stepper-progress {
+  font-size: 1.1rem;
+  color: #d4ff3f;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+.dashboard-stepper-label {
+  color: #fff;
+  font-weight: 700;
+}
+.dashboard-stepper-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.dashboard-step-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.dashboard-step-fields label {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #b0b0b0;
+  gap: 0.5rem;
+}
+.dashboard-step-fields input {
+  margin-top: 0.3rem;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  border: 1.5px solid #232323;
+  background: #111;
+  color: #fff;
+  font-size: 1.1rem;
+  outline: none;
+  transition: border 0.2s;
+}
+.dashboard-step-fields input:focus {
+  border: 1.5px solid #d4ff3f;
+}
+.dashboard-stepper-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+.dashboard-btn {
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  background: #232323;
+  color: #fff;
+  transition: background 0.2s, color 0.2s;
+}
+.dashboard-btn--primary {
+  background: #d4ff3f;
+  color: #181818;
+}
+.dashboard-btn--primary:hover {
+  background: #b6e62e;
+}
+.dashboard-btn--secondary {
+  background: #232323;
+  color: #fff;
+}
+.dashboard-btn--secondary:hover {
+  background: #333;
 }
 
 @media (max-width: 800px) {
@@ -79,5 +163,10 @@
   }
   .dashboard-main {
     padding: 2rem 1rem;
+  }
+  .dashboard-stepper {
+    min-width: 0;
+    max-width: 100%;
+    padding: 1.5rem 0.5rem;
   }
 } 
