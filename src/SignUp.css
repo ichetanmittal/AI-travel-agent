@@ -1,0 +1,128 @@
+.signup-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #000000;
+  color: #fff;
+}
+
+.signup-logo {
+  margin-bottom: 2rem;
+}
+
+.signup-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.signup-subtitle {
+  color: #b0b0b0;
+  font-size: 1.2rem;
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.signup-form {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.signup-label {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+}
+
+.signup-input {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1.5px solid #232323;
+  background: #181818;
+  color: #fff;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  outline: none;
+  transition: border 0.2s;
+}
+.signup-input:focus {
+  border: 1.5px solid #d4ff3f;
+}
+
+.signup-captcha {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #232323;
+  border: 2px solid #444;
+  border-radius: 6px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.signup-captcha-success {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #d4ff3f;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+.signup-captcha-check {
+  font-size: 1.5rem;
+}
+.signup-captcha-cloudflare {
+  text-align: right;
+  color: #fff;
+}
+
+.signup-btn {
+  width: 100%;
+  background: #fff;
+  color: #181818;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 14px;
+  padding: 1rem 0;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.signup-btn:hover {
+  background: #d4ff3f;
+  color: #181818;
+}
+
+.signup-login {
+  margin: 2rem 0 1rem 0;
+  color: #b0b0b0;
+  font-size: 1.1rem;
+  text-align: center;
+}
+.signup-login-link {
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  margin-left: 0.3rem;
+}
+.signup-login-link:hover {
+  text-decoration: underline;
+}
+
+.signup-terms {
+  color: #b0b0b0;
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 2rem;
+}
+.signup-terms a {
+  color: #b0b0b0;
+  text-decoration: underline;
+} 
