@@ -13,7 +13,7 @@ export default function Navbar() {
             <circle cx="20.5" cy="13.5" r="1" fill="#181818"/>
           </svg>
         </span>
-        <span className="navbar__brand">Dodo Payments</span>
+        <span className="navbar__brand">CheckList AI</span>
       </div>
       <ul className="navbar__links">
         <li>Products</li>
