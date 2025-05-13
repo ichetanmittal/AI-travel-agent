@@ -18,11 +18,11 @@ export default function Navbar() {
         <span className="navbar__brand">CheckList AI</span>
       </div>
       <ul className="navbar__links">
-        <li>Products</li>
+        {/* <li>Products</li>
         <li>Solutions</li>
         <li>Pricing</li>
         <li>Resources</li>
-        <li>Developer</li>
+        <li>Developer</li> */}
       </ul>
       <div className="navbar__actions">
         <button className="navbar__btn navbar__btn--primary">Get Started</button>
