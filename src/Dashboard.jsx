@@ -89,7 +89,7 @@ export default function Dashboard({ user = "User" }) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Bearer ",
+          "Authorization": "",
         },
         body: JSON.stringify({
           model: "gpt-4.1",
@@ -228,10 +228,12 @@ export default function Dashboard({ user = "User" }) {
                   border: 'none',
                   borderRadius: 8,
                   padding: '6px 14px',
-                  cursor: 'pointer',
+                  cursor: itinerary && !loading && !error ? 'pointer' : 'not-allowed',
                   fontWeight: 700,
                   fontSize: 16,
+                  opacity: itinerary && !loading && !error ? 1 : 0.5,
                 }}
+                disabled={!itinerary || loading || error}
               >
                 Download PDF
               </button>
