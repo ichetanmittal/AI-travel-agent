@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Dashboard.css";
+import { jsPDF } from "jspdf";
 
 const steps = [
   {
@@ -113,6 +114,28 @@ export default function Dashboard({ user = "User" }) {
     }
   }
 
+  function handleDownloadPDF() {
+    if (!itinerary) return;
+    const doc = new jsPDF();
+    const pageHeight = doc.internal.pageSize.height;
+    const margin = 10;
+    let y = 20;
+
+    // Split the itinerary into lines that fit the page width
+    const lines = doc.splitTextToSize(itinerary, 180); // 180 is page width minus margins
+
+    lines.forEach(line => {
+      if (y > pageHeight - margin) {
+        doc.addPage();
+        y = 20;
+      }
+      doc.text(line, margin, y);
+      y += 8; // line height
+    });
+
+    doc.save("itinerary.pdf");
+  }
+
   return (
     <div className="dashboard-root">
       <aside className="dashboard-sidebar">
@@ -193,6 +216,24 @@ export default function Dashboard({ user = "User" }) {
                 }}
               >
                 ×
+              </button>
+              <button
+                onClick={handleDownloadPDF}
+                style={{
+                  position: 'absolute',
+                  top: 16,
+                  right: 56,
+                  background: '#d4ff3f',
+                  color: '#181818',
+                  border: 'none',
+                  borderRadius: 8,
+                  padding: '6px 14px',
+                  cursor: 'pointer',
+                  fontWeight: 700,
+                  fontSize: 16,
+                }}
+              >
+                Download PDF
               </button>
               <h2 style={{marginTop: 0}}>Generated Itinerary</h2>
               {loading && <div>Generating itinerary...</div>}
